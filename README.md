@@ -6,7 +6,7 @@ This is a web app which allows users to create, modify and/or delete contacts. U
 
 Two tables are created:
 
-* Accounts which holds the login credentials
+* Accounts which holds the User's login credentials
 * Contacts which stores:
     * User contact info
     * User's contacts
