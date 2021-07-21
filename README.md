@@ -19,14 +19,14 @@ Contributor names and contact info
 
 ## Version History
 
-* 0.1
-    * Initial Release
 * 0.2
     * User Accounts registration and log-in
     * Allow CRUD operation on Contacts
     * User Account and Contacts persist in the database
     * Edit User Profiles
     * Fixed web interface
+* 0.1
+    * Initial Release
 
 ### Reference Documentation
 
