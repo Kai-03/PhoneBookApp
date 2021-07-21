@@ -12,30 +12,83 @@
 		    <a href="/dashboard?user={{user_id}}">Profile</a>
 		    <a href="/contacts?user={{user_id}}">Contacts</a>
 		    <a href="/explore?user={{user_id}}">Explore</a>
+		    <a href="/" type="button" ng-click="logout()" >Log out</a>
 		    <!-- <div><h4><a href="http://www.code-sample.com/2015/06/redirect-to-new-page-using-location-or.html">For more detail..</a></h4></div> -->
 		</td>
 		<td>
-			<input type="text" placeholder="First name" ng-model="data.first_name">
-    		<input type="text" placeholder="Last name" ng-model="data.last_name">
-    		<input type="text" placeholder="Phone" ng-model="data.phone">
-    		<input type="text" placeholder="Email" ng-model="data.email">
+			<div><h2>Create a new contact</h2></div>
+			<table>
+				<thead>
+					<th>First Name</th><th>Last Name</th><th>Phone</th><th>Email</th>
+				</thead>
+				<tbody>
+					<td><input type="text" placeholder="First name" ng-model="data.first_name"></td>
+		    		<td><input type="text" placeholder="Last name" ng-model="data.last_name"></td>
+		    		<td><input type="text" placeholder="Phone" ng-model="data.phone"></td>
+		    		<td><input type="text" placeholder="Email" ng-model="data.email"></td>
+	    		</tbody>
+    		</table>
     		<div ng-click="create()" class='clickable'>
-		      <h3>Create new contact</h3>
+		      <p>Add to contacts</p>
 		    </div>
 			<table>
 				<thead>
-					<th>Name</th><th>Phone</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Phone</th>
+					<th>Email</th>
+					<th>*</th>
+					<th>*</th>
 				</thead>
 				<tbody ng-repeat = "contact in contacts">
-					<td>{{contact.first_name}} {{contact.last_name}}</td>
-					<td>{{contact.phone}}</td>
-					<td ng-show="ifedit(contact.contact_id)"><input type="text" placeholder="{{contact.first_name}}" ng-model="contact.first_name"></td>
-					<td ng-show="ifedit(contact.contact_id)"><input type="text" placeholder="{{contact.last_name}}" ng-model="contact.last_name"></td>
-					<td ng-show="ifedit(contact.contact_id)"><input type="text" placeholder="{{contact.phone}}" ng-model="contact.phone"></td>
-					<td ng-show="ifedit(contact.contact_id)"><input type="text" placeholder="{{contact.email}}" ng-model="contact.email"></td>
-					<td ng-show="ifedit(contact.contact_id, false)"><td ng-click="edit(contact.contact_id)" class='clickable'>[Edit]</td></td>
-					
-					<td ng-click="delete(contact.contact_id)" class='clickable'>[Delete]</td>
+				<h2>Contacts List</h2>
+					<td>
+						<div ng-show="ifedit(contact.contact_id)">
+						{{contact.first_name}} 
+						</div>
+						<div ng-show="ifedit(contact.contact_id, true)">
+							<input type="text" placeholder="{{contact.first_name}}" ng-model="contact.first_name">
+						</div>
+					</td>
+					<td>
+						<div ng-show="ifedit(contact.contact_id)">
+						{{contact.last_name}} 
+						</div>
+						<div ng-show="ifedit(contact.contact_id, true)">
+							<input type="text" placeholder="{{contact.last_name}}" ng-model="contact.last_name">
+						</div>
+					</td>
+					<td>
+						<div ng-show="ifedit(contact.contact_id)">
+						{{contact.phone}} 
+						</div>
+						<div ng-show="ifedit(contact.contact_id, true)">
+							<input type="text" placeholder="{{contact.phone}}" ng-model="contact.phone">
+						</div>
+					</td>
+					<td>
+						<div ng-show="ifedit(contact.contact_id)">
+						{{contact.email}} 
+						</div>
+						<div ng-show="ifedit(contact.contact_id, true)">
+							<input type="text" placeholder="{{contact.email}}" ng-model="contact.email">
+						</div>
+					</td>
+					<!-- Buttons Pane -->
+					<td>						
+						<!-- Edit/Save Button -->
+						<div ng-show="ifedit(contact.contact_id, null)">
+							<p type="button" ng-click="edit(contact.contact_id)" class='clickable'>[Edit]</p>
+						</div>
+						<div ng-show="ifedit(contact.contact_id, true)">
+							<p type="button" ng-click="save(contact)" class='clickable'>[Save]</p>
+						</div>
+					</td>
+					<td>
+						<!-- Delete Button -->
+						<p type="button" ng-click="delete(contact.contact_id)" class='clickable'>[Delete]</p>
+					</td>
+
 				</tbody>
 			</table>
 		</td>

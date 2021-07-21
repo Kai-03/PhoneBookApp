@@ -27,7 +27,7 @@ public class ContactsService {
 	// Update contact
 	public Contact update(long cid, String first_name, String last_name, String phone, String email, long userid)  {
 		Contact contact=contacts.findById(cid).get();
-		contact.update(first_name, last_name, phone, email, userid);;
+		contact.update(first_name, last_name, phone, email, userid);
 		return contacts.save(contact);
 	}
 	

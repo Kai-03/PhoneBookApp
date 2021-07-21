@@ -190,22 +190,22 @@ public class AccountResource {
 	}
 	
 	/* Update a contact */
-	@RequestMapping(value="update", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="contacts", method=RequestMethod.PUT, produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> updateContact(@RequestBody JSONObject data) throws URISyntaxException{
 		String reply = "";
 		try {
-			long uid = Long.parseLong(data.get("uid").toString());
-			long cid = Long.parseLong(data.get("cid").toString());
+			long uid = Long.parseLong(data.get("user_id").toString());
+			long cid = Long.parseLong(data.get("contact_id").toString());
 			String first_name=data.get("first_name").toString();
 			String last_name=data.get("last_name").toString();
 			String phone = data.get("phone").toString();
 			String email = data.get("email").toString();
-			con_service.update(cid, first_name, last_name, phone, email, uid);
+			System.out.println(first_name);
 			
-			con_service.delete(cid, false);
-			System.out.println("Removed a contact");
-			System.out.println(con_service.read_all());
-			ResponseEntity<String> response = ResponseEntity.status(HttpStatus.OK).body("Removed contact");
+			con_service.update(cid, first_name, last_name, phone, email, uid);
+			Contact contact = con_service.getById(cid);
+			
+			ResponseEntity<String> response = ResponseEntity.created(new URI("contacts/"+cid)).body(contact.toJSON());
 			return response;
 		}
 		catch(Exception e) {

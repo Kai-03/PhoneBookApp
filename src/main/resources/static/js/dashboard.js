@@ -1,6 +1,6 @@
 // Main Module
 var main = angular.module("main",['ngRoute']);
-var URL = "http://localhost:8083";
+var URL = "http://localhost:8084";
 
 // Main Configuration
 main.config(function ($routeProvider, $locationProvider){
@@ -25,7 +25,7 @@ main.config(function ($routeProvider, $locationProvider){
 
 
 // Class BaseAccount: containing all account data
-class BaseAccount {
+class BaseData {
   constructor(first_name="", last_name="", phone="", email="", user_id="") {
 	var data = {
 		first_name: first_name,
@@ -53,7 +53,7 @@ class BaseAccount {
 // Main Controller
 main.controller("mainController", function($scope, $http, $location) { //, $window, $routeParams, $location){
 	$scope.scene="profile";
-	$scope.data = new BaseAccount().data;
+	$scope.data = new BaseData().data;
 
   // Get URL Params
 	var user_id = $location.search().user;
@@ -67,51 +67,83 @@ main.controller("mainController", function($scope, $http, $location) { //, $wind
 // Contacts Controller
 main.controller("contactsController", function($scope, $http, $location, $window) { //, $window, $routeParams, $location){
 	$scope.scene="contacts";
-	$scope.data = new BaseAccount().data;
+	Base = new BaseData("Vina", "Trinitipakdee", "09050805", "email@email.com");
+	$scope.data = Base.data; 
 
 	var user_id = $location.search().user;
 	$scope.user_id = user_id;
 	$scope.data.user_id = $scope.user_id;
-	$scope.editing = {1 : false};
+	$scope.editing = {trigger : false};
 	
-	$http.get(URL+"/contacts?user="+$scope.user_id).then(function(response){
-		$scope.contacts=response.data;
-	})
+	// Retrieve current Contacts
+	$scope.retrieve = function () {
+		$http.get(URL+"/contacts?user="+$scope.user_id).then(function(response){
+			$scope.contacts=response.data;
+		})
+	}
+	$scope.retrieve();
 	
+	// Define Update function
 	$scope.update=function(){
-		$window.setTimeout(function () {console.log("Start");
+		//console.log($scope.data);
+		$window.setTimeout(function () {
 			$http.get(URL+"/contacts?user="+$scope.user_id).then(function(results){
-				$scope.contacts=results.data;
-				//console.log(results.data.values());
-				//console.log($scope.contacts);
-			})}
-		,1000)
+				$scope.contacts=results.data;})
+		},500)
 	}
 	
+	// Create Contact
 	$scope.create=function(){
+		//console.log($scope.data);
 		$http.post(URL+"/contacts?user="+$scope.user_id, $scope.data).then(function(response){
 			//console.log(response.data);
 		})
 		$scope.update();
+		$scope.data = Base.clear();
+		$scope.data.user_id = $scope.user_id;
 	}
 	
+	// Check If Editing a Contact
+	$scope.ifedit=function(cid, expect = null){
+		var open = $scope.editing[cid];
+		//console.log(open);
+		//console.log($scope.editing);
+		return $scope.editing[cid] == expect;
+	}
+	
+	// Enable Editing
+	$scope.edit=function(cid){
+		$scope.editing[cid] = true;
+	}
+	// Disable Editing
+	$scope.unedit=function(cid){
+		$scope.editing[cid] = null;
+	}
+	
+	// Modify Contact: Save()
+	$scope.save=function(contact){
+		var data = contact
+		data.user_id = $scope.user_id; // Bind to user_id
+		$http.put(URL+"/contacts?user="+$scope.user_id, data).then(function(response){
+			console.log(reponse);
+		});
+		$scope.update();
+		console.log("Saved");
+		console.log($scope.editing);
+		$scope.unedit(contact.contact_id);
+	}
+	
+	// Delete Contact
 	$scope.delete=function(cid){
-		//console.log(cid);
-		$http.delete(URL+"/contacts/"+cid, $scope.data).then(function(response){});
+		$scope.unedit(cid);
+		console.log(cid);
+		$http.delete(URL+"/contacts/"+cid).then(function(response){});
 		$scope.update();
 	}
 	
-	$scope.edit=function(cid){
-		$scope.editing.cid = true;
-		//console.log($scope.editing.cid);
+	$scope.logout = function(){
+		$window.location.href = URL+"/main";
 	}
-	$scope.ifedit=function(cid, expect = true){
-		if (expect == false){
-			console.log($scope.editing.cid);
-			console.log("show?")
-			console.log($scope.editing.cid != expect);
-			return $scope.editing.cid != expect;
-		}
-		return $scope.editing.cid == expect;
-	}
+	
+	
 })

@@ -45,7 +45,8 @@ public class Contact{
 	}
 	
 	// Update Contact
-	public void update(String first_name, String last_name, String phone, String email, long uid) {
+	public void update(String first_name, String last_name, String phone, String email, long bid) {
+		// Empty String
 		String nil="";
 		
 		if (!first_name.equals(nil)) { 
@@ -57,7 +58,7 @@ public class Contact{
 		if (!email.equals(nil)) { 
 			this.email = email;}
 		
-		this.ref_user_id = uid;
+		this.bound_user_id = bid;
 	}
 	
 	// Convert to String
