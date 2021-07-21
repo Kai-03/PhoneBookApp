@@ -1,4 +1,4 @@
-# PhoneBook App
+# PhoneBook Web App
 
 This is a web app which allows users to create, modify and/or delete contacts. Users are created in the registration page. Contacts are associated with different User Accounts and are retrieved using a unique ID from the User. This web app demonstrates the CRUD operations in a MVC framework.
 
