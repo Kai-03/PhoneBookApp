@@ -10,6 +10,6 @@ import com.PhonebookPrototype.firstprototype.models.Contact;
 
 public interface Contacts extends JpaRepository<Contact, Long> {
 	// Retrieve all matching user_ids
-	@Query(value = "SELECT * FROM Contacts WHERE bound_user_id = ?1", nativeQuery=true)
+	@Query(value = "SELECT * FROM Contacts WHERE bound_user_id = ?1 AND ref_user_id != ?1", nativeQuery=true)
 	List<JSONObject> findContactByRefUser(long bound_user_id);
 }
