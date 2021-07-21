@@ -21,13 +21,12 @@ Contributor names and contact info
 
 * 0.1
     * Initial Release
-    * Working User registration and log in
-    * Create and Delete Contacts
+* 0.2
+    * User Accounts registration and log-in
+    * Allow CRUD operation on Contacts
     * User Account and Contacts persist in the database
-    * Currently no input character validation at the moment
-    * Web interface is under development
-    * To add the Update Contact functionality
-    * To develop Explore functionality which allows a User to list other Users and Add them to their Contacts list
+    * Edit User Profiles
+    * Fixed web interface
 
 ### Reference Documentation
 

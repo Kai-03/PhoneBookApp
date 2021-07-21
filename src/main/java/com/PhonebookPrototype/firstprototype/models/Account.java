@@ -18,7 +18,6 @@ import com.google.gson.Gson;
 
 @Entity
 @Table(name = "Accounts")
-//@EntityListeners(AuditingEntityListener);
 public class Account{
 	// Unique Account ID
 	@Id
@@ -103,7 +102,6 @@ public class Account{
 	public void link(long cid) {
 		this.contact_id=cid;
 	}
-	
 	
 	// Return String data
 	public String toStrings() {

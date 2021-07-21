@@ -2,17 +2,14 @@
 
 <div ng-controller = "registerController" >
   <h2>Registration Page</h2>
-  <p>Scene: {{scene}}</p>
   <div>
-    Username: <input type="text" placeholder="{{data.username}}" ng-model="data.username">
-    Password: <input type="password" placeholder="{{data.password}}" ng-model="data.password">
+    Username: <input type="text" placeholder="{{data.username}}" ng-model="data.username" maxlength="20">
+    Password: <input type="password" placeholder="{{data.password}}" ng-model="data.password" maxlength="20" required>
   </div>
   <div>
-    First Name: <input type="text" placeholder={{data.first_name}} ng-model="data.first_name">
-    Last Name: <input type="text" placeholder={{data.last_name}} ng-model="data.last_name">
+    First Name: <input type="text" placeholder={{data.first_name}} ng-model="data.first_name" maxlength="20" required>
+    Last Name: <input type="text" placeholder={{data.last_name}} ng-model="data.last_name" maxlength="20">
   </div>
-  <div ng-click="register()" class='clickable'>
-    Register
-  </div>
+  <input type="button" value = "Register" ng-click="register()">
   <p>{{register_mes}}</p>
 </div>

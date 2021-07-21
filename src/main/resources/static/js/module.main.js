@@ -1,7 +1,6 @@
 
 // Main Module
 var main = angular.module("main",['ngRoute']);
-var URL = "http://localhost:8084";
 
 // Main Configuration
 main.config(function ($routeProvider, $locationProvider){
@@ -30,52 +29,27 @@ main.config(function ($routeProvider, $locationProvider){
 })
 // End Main Configuration
 
-// Class BaseAccount: containing all account data
-class BaseAccount {
-  constructor(username="kai03", password="", first_name="", last_name="") {
-    var data = {
-      username: username,
-      password: password,
-      first_name: first_name,
-      last_name: last_name
-    }
-    this.data = data;
-  }
-
-  clear() {
-    var data = {
-      username: "",
-      password: "",
-      first_name: "",
-      last_name: ""
-    }
-    return data;
-  }
-
-}
 
 /* Define Controllers */
-
 // Login
 main.controller("loginController", function($scope, $http, $window){
-  $scope.scene="login";
-  $scope.data = new BaseAccount().data;
+	$scope.scene="login";
+  	$scope.data = new BaseAccount().data;
 
-  $scope.login = function() {
-    var url = URL+"/login";
-    $http.post(url, $scope.data)
-    .then(function (response) {
-        if (response.data) {
-          console.log(response.data.user_id);
-          $scope.login_mes=response.data.msg;
-          // $window.location.href
-          // $routeProvider =
-          $window.location.href = URL+"/dashboard?user="+response.data.user_id;
-        }
-    })
-  }
-
-});
+  	$scope.login = function() {
+    	var url = URL+"/login";
+    	$http.post(url, $scope.data).then(function (response) {
+	        if (response.data) {
+				console.log(response.data.access);
+				if (response.data.access == "true") {
+					$window.location.href = URL+"/dashboard?user="+response.data.user_id;}
+				else{
+					$scope.login_mes=response.data.msg;
+				}
+        	}
+		})
+	}
+})
 
 // Register
 main.controller("registerController", function($scope, $http){

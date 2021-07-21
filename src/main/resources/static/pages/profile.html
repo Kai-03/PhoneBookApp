@@ -12,21 +12,80 @@
 		    <a href="/dashboard?user={{user_id}}">Profile</a>
 		    <a href="/contacts?user={{user_id}}">Contacts</a>
 		    <a href="/explore?user={{user_id}}">Explore</a>
+		    <a href="/" type="button" ng-click="logout()">Log out</a>
 		    <!-- <div><h4><a href="http://www.code-sample.com/2015/06/redirect-to-new-page-using-location-or.html">For more detail..</a></h4></div> -->
 		</td>
-		<td>      
+		<td>
 			<div>
-				<div>
-					<h1>Welcome {{user.first_name}}!</h1>
-				</div>
-				<div>
-		    		<h2>Profile</h2>
-			    	<p> Contact ID: {{user_id}} </p>
-			    	<p> Name: {{user.first_name}} {{user.last_name}}</p>
-			    	<p> Phone: {{user.phone}}</p> 
-			    	<p> Email: {{user.email}}</p>
-				</div>
+				<h1>Welcome {{contact.first_name}}!</h1>
 			</div>
+			<div>
+				<table>
+					<tr>
+						<td><h3>User Details</h3></td>
+						<td><input ng-show="ifedit('user')" type="button" value = "Edit" ng-click=edit('user') ></td>
+						<td><input ng-show="ifedit('user',true)" type="button" value = "Save" ng-click=save('user') ></td>
+					</tr>
+				</table>
+			</div>
+			<table class="ntable">
+				<thead>
+					<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td>
+						<div ng-show="ifedit('user')">
+							{{contact.first_name}} 
+						</div>
+						<div ng-show="ifedit('user',true)">
+							<input type="text" placeholder="{{contact.first_name}}" ng-model="contact.first_name" maxlength="20">
+						</div>
+					</td>
+					<td>
+						<div ng-show="ifedit('user')">
+							{{contact.last_name}} 
+						</div>
+						<div ng-show="ifedit('user',true)">
+							<input type="text" placeholder="{{contact.last_name}}" ng-model="contact.last_name" maxlength="20">
+						</div>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+			<table>
+				<tr>
+					<td><h3>Phone</h3></td>
+					<td><input ng-show="ifedit('phone')" type="button" value = "Edit" ng-click=edit('phone') maxlength="15"></td>
+					<td><input ng-show="ifedit('phone',true)" type="button" value = "Save" ng-click=save('phone') maxlength="15"></td>
+				</tr>
+				<td>
+					<div ng-show="ifedit('phone')">
+						{{contact.phone}} 
+					</div>
+					<div ng-show="ifedit('phone',true)">
+						<input type="text" placeholder="{{contact.phone}}" ng-model="contact.phone">
+					</div>
+				</td>
+			</table>
+			<table>
+				<tr>
+					<td><h3>Email</h3></td>
+					<td><input ng-show="ifedit('email')" type="button" value = "Edit" ng-click=edit('email') maxlength="20"></td>
+					<td><input ng-show="ifedit('email',true)" type="button" value = "Save" ng-click=save('email') maxlength="20"></td>
+				</tr>
+				<td>
+					<div ng-show="ifedit('email')">
+						{{contact.email}} 
+					</div>
+					<div ng-show="ifedit('email',true)">
+						<input type="text" placeholder="{{contact.email}}" ng-model="contact.email">
+					</div>
+				</td>
+			</table>
 		</td>
 	</tr>
 	
