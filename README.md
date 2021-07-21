@@ -1,6 +1,6 @@
 # PhoneBook App
 
-This is a web app which allows users to create, modify or delete contacts. Users are created in the registration page. Contacts are associated with different User Accounts and retrieved using a unique ID from the User. This web app simulates the CRUD operations in a MVC framework.
+This is a web app which allows users to create, modify and/or delete contacts. Users are created in the registration page. Contacts are associated with different User Accounts and retrieved using a unique ID from the User. This web app simulates the CRUD operations in a MVC framework.
 
 ## Database
 
@@ -13,7 +13,7 @@ Two tables are created:
 
 ## Authors
 
-Contributor names and contact info
+Contributor names and contact info:
 
 [Kui-Dong Riman](https://github.com/Kai-03/)
 
@@ -30,7 +30,7 @@ Contributor names and contact info
 
 ### Reference Documentation
 
-This web app was created using Eclipse IDE and Spring Boot Initializer. Dependencies associated with this web app include:
+This App was built using **Eclipse IDE** and **Spring Initializer**. Dependencies associated with this web app include:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.2/maven-plugin/reference/html/)
