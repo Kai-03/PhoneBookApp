@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<title>K41</title>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.min.js"> -->
+  <!-- </script> -->
+  <!-- <script th:src="@{/resources/ng-table.min.js}"></script>
+  <script th:src="@{/resources/mainCtrl.js}"></script> -->
+
+  <!-- <script src="app.js"></script> -->
+  <script src="js/register.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <h1>The Record of Ragnarok</h1>
+</head>
+<body ng-app="account">
+  <div ng-controller = "controller" >
+    <h2>Registration Page</h2>
+    <div>
+      Username: <input type="text" placeholder="{{data.username}}" ng-model="data.username">
+      Password: <input type="password" placeholder="{{data.password}}" ng-model="data.password">
+    </div>
+    <div>
+      First Name: <input type="text" placeholder={{data.first_name}} ng-model="data.first_name">
+      Last Name: <input type="text" placeholder={{data.last_name}} ng-model="data.last_name">
+    </div>
+    <div ng-click="register()" class='unselectable'>
+      Register
+    </div>
+  </div>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html">
+<title>K41</title>
+<head>
+  <meta charset="utf-8">
+  <!-- Import Libraries -->
+  <script src="https://code.angularjs.org/1.8.2/angular.js"></script>
+  <script src="https://code.angularjs.org/1.8.2/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-resource.js"></<script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https:maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.js"></script>
+  <!-- Load Scripts -->
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="account.service.js"></script>
+  <script type="text/javascript" src="controller.js"></script>
+
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body ng-app="crudApp">
+  <table>
+  <tr>
+    <tr ng-repeat="record in records">
+      <td>ID: {{record.id}}: </td>
+      <td>Title: {{record.title}}</td>
+      <td>Description: {{record.description}}</td>
+    </tr>
+  </tr>
+  </table>
+  <div>
+    <input type="text" placeholder="title" ng-model="newrecord.title">
+    <input type="text" placeholder="description" ng-model="newrecord.description">
+    <p>Title: {{newrecord.title}} Description: {{newrecord.description}}</p>
+    <div ng-click="post_records()" class='unselectable'>
+      <h3>Submit!</h3>
+    </div>
+  </div>
+</body>
+</html>

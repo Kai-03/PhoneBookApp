@@ -1,0 +1,49 @@
+
+<table style="font-family: Arial">
+	<tr>
+		<td colspan="2" class="header">
+			<h1>
+			    Phonebook App
+			</h1>
+		</td>
+	</tr>
+	<tr ng-controller = "contactsController">
+		<td class="leftMenu">
+		    <a href="/dashboard?user={{user_id}}">Profile</a>
+		    <a href="/contacts?user={{user_id}}">Contacts</a>
+		    <a href="/explore?user={{user_id}}">Explore</a>
+		    <!-- <div><h4><a href="http://www.code-sample.com/2015/06/redirect-to-new-page-using-location-or.html">For more detail..</a></h4></div> -->
+		</td>
+		<td>
+			<input type="text" placeholder="First name" ng-model="data.first_name">
+    		<input type="text" placeholder="Last name" ng-model="data.last_name">
+    		<input type="text" placeholder="Phone" ng-model="data.phone">
+    		<input type="text" placeholder="Email" ng-model="data.email">
+    		<div ng-click="create()" class='clickable'>
+		      <h3>Create new contact</h3>
+		    </div>
+			<table>
+				<thead>
+					<th>Name</th><th>Phone</th>
+				</thead>
+				<tbody ng-repeat = "contact in contacts">
+					<td>{{contact.first_name}} {{contact.last_name}}</td>
+					<td>{{contact.phone}}</td>
+					<td ng-show="ifedit(contact.contact_id)"><input type="text" placeholder="{{contact.first_name}}" ng-model="contact.first_name"></td>
+					<td ng-show="ifedit(contact.contact_id)"><input type="text" placeholder="{{contact.last_name}}" ng-model="contact.last_name"></td>
+					<td ng-show="ifedit(contact.contact_id)"><input type="text" placeholder="{{contact.phone}}" ng-model="contact.phone"></td>
+					<td ng-show="ifedit(contact.contact_id)"><input type="text" placeholder="{{contact.email}}" ng-model="contact.email"></td>
+					<td ng-show="ifedit(contact.contact_id, false)"><td ng-click="edit(contact.contact_id)" class='clickable'>[Edit]</td></td>
+					
+					<td ng-click="delete(contact.contact_id)" class='clickable'>[Delete]</td>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="2" class="footer">
+		    <b>Website Footer</b>
+		</td>
+	</tr>
+</table>

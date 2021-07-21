@@ -1,0 +1,13 @@
+
+<div ng-controller = "loginController" >
+  <h2>Login Page</h2>
+  <p>Scene: {{scene}}</p>
+  <div>
+    Username: <input type="text" placeholder="{{data.username}}" ng-model="data.username">
+    Password: <input type="password" placeholder="{{data.password}}" ng-model="data.password">
+  </div>
+  <div ng-click="login()" class='clickable'>
+    Login
+  </div>
+  <p>{{login_mes}}</p>
+</div>

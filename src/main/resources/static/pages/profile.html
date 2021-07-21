@@ -1,0 +1,38 @@
+
+<table style="font-family: Arial">
+	<tr>
+		<td colspan="2" class="header">
+			<h1>
+			    Phonebook App
+			</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="leftMenu">
+		    <a href="/dashboard?user={{user_id}}">Profile</a>
+		    <a href="/contacts?user={{user_id}}">Contacts</a>
+		    <a href="/explore?user={{user_id}}">Explore</a>
+		    <!-- <div><h4><a href="http://www.code-sample.com/2015/06/redirect-to-new-page-using-location-or.html">For more detail..</a></h4></div> -->
+		</td>
+		<td>      
+			<div>
+				<div>
+					<h1>Welcome {{user.first_name}}!</h1>
+				</div>
+				<div>
+		    		<h2>Profile</h2>
+			    	<p> Contact ID: {{user_id}} </p>
+			    	<p> Name: {{user.first_name}} {{user.last_name}}</p>
+			    	<p> Phone: {{user.phone}}</p> 
+			    	<p> Email: {{user.email}}</p>
+				</div>
+			</div>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="2" class="footer">
+		    <b>Website Footer</b>
+		</td>
+	</tr>
+</table>

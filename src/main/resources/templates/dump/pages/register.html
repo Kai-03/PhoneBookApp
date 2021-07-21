@@ -1,0 +1,17 @@
+
+
+<div ng-controller = "registerController" >
+  <h2>Registration Page</h2>
+  <div>
+    Username: <input type="text" placeholder="{{data.username}}" ng-model="data.username">
+    Password: <input type="password" placeholder="{{data.password}}" ng-model="data.password">
+  </div>
+  <div>
+    First Name: <input type="text" placeholder={{data.first_name}} ng-model="data.first_name">
+    Last Name: <input type="text" placeholder={{data.last_name}} ng-model="data.last_name">
+  </div>
+  <div ng-click="register()" class='clickable'>
+    Register
+  </div>
+  <p>{{register_mes}}</p>
+</div>
