@@ -14,10 +14,59 @@
 		    <a href="/explore?user={{user_id}}">Explore</a>
 		    <a href="/" type="button" ng-click="logout()">Log out</a>
 		</td>
+		<td>
+			<div>
+			
+				<table>
+					<thead>
+						<th style="text-align: left">Search People</th>
+						<th style="text-align: left">Search Contacts</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="padding-right: 30px"><input type="text" placeholder="Search people" ng-model="search.users" required maxlength="20"></td>
+							<td style="padding-right: 30px"><input type="text" placeholder="Search your contacts" ng-model="search.contacts" required maxlength="20"></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table>
+					<thead>
+					<th class="spaced_table"><h4>Find People</h4></th>
+					<th class="spaced_table"><h4>Your Contacts</h4></th>
+					</thead>
+					<tbody>
+					<tr>
+						<td>
+						<table ng-repeat="user in users | filter: search.users">
+							<tr>
+							<td class="spaced_table">
+								{{user.first_name}} {{user.last_name}}
+								<!--  <input type="button" value="Add" ng-click="add_to_contacts(user)" ng-show="contacts_include(user), false">
+								<input type="button" value="Friends" ng-click="" ng-show="contacts_include(user, true)">-->
+							</td>
+							</tr>
+						</table>
+						</td>
+						
+						<td>
+						<table ng-repeat="contact in contacts | filter: search.contacts">
+							<tr>
+							<td class="spaced_table">
+								{{contact.first_name}} {{contact.last_name}}
+							</td>
+							</tr>
+						</table>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+						
+
+				
+			</div>
+		</td>
 	</tr>
-	<div>
-		<table>
-			<tr>This page is not implemented yet.</tr>
-		</table>
-	</div>
+
 </table>

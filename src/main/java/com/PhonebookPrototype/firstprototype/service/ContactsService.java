@@ -70,8 +70,6 @@ public class ContactsService {
 		}
 		return all;
 	}
-	
-
-	
+		
 	
 }

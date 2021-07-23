@@ -17,7 +17,7 @@ main.config(function ($routeProvider, $locationProvider){
   })
   .when("/explore", {
     templateUrl: "pages/explore.html",
-    controller: "contactsController"
+    controller: "exploreController"
   })
 
   // Enable html5Mode

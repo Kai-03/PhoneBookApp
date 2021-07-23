@@ -36,11 +36,6 @@ public class AccountResource {
 	@Autowired
 	private ContactsService con_service;
 	
-	public AccountResource(AccountsService acc_service) {
-		this.acc_service = acc_service;
-	}
-	
-	
 	/* Register User */
 	@RequestMapping(value="register", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<JSONObject> create(@RequestBody JSONObject account) throws URISyntaxException{

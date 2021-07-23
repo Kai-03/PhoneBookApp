@@ -35,8 +35,8 @@ public class Account{
 	private long contact_id;
 	
 	// Contact IDs List
-	@Column(name = "contacts")
-	private Long[] contacts;
+	@Column(name = "uniq_contacts")
+	private Long[] uniq_contacts;
 	
 	// Default call
 	public Account(){
@@ -63,25 +63,16 @@ public class Account{
 	public long contact_id(){
 		return contact_id;
 	}
-	// Get contacts array
+	
+	// Get uniq_contacts array //
 	public List<Long> contactList(){
-		List<Long> targetlist = Arrays.asList(contacts);
+		List<Long> targetlist = Arrays.asList(uniq_contacts);
 		return targetlist;
 	}
+	
 	// Add to contacts array
-	public void addtoContactList(Long cid){
-		List<Long> targetlist = Arrays.asList(contacts);
-		System.out.println(targetlist);
-		targetlist.add(cid);
-		System.out.println(targetlist);
-		this.contacts = targetlist.toArray(new Long[0]);
-		System.out.println(contacts);
-	}
-	// Remove contacts to array
-	public void removetoContactList(Long cid){
-		List<Long> targetlist = Arrays.asList(contacts);
-		targetlist.remove(cid);
-		this.contacts = targetlist.toArray(new Long[0]);
+	public void addUserToContacts(Long cid){
+		
 	}
 	
 	// Convert self to JSON

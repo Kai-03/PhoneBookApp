@@ -43,6 +43,12 @@ a{
   border-spacing: 150px;
 }
 
+.spaced_table {
+  /*border: 1px solid black;*/
+  padding-right: 55px;
+  padding-left: 55px;
+}
+
 /* Scrollable Table */
 .container{
   padding: 1rem;

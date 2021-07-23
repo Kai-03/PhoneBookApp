@@ -1,10 +1,16 @@
 package com.PhonebookPrototype.firstprototype.service;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.PhonebookPrototype.firstprototype.models.Account;
 import com.PhonebookPrototype.firstprototype.repository.Accounts;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -12,7 +18,6 @@ import java.util.List;
 public class AccountsService {
 	// Accounts Repository
 	private Accounts users;
-	
 	@Autowired
 	public AccountsService(Accounts users) {
 		this.users=users;
@@ -64,5 +69,10 @@ public class AccountsService {
 	// Get Account by Id
 	public Account getUserById(long uid) {
 		return users.getById(uid);
+	}
+	
+	// Get Uniq Contacts
+	public List<Long> getUniqContacts(long uid){
+		return users.getUniqContacts(uid);
 	}
 }

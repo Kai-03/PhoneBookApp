@@ -2,6 +2,7 @@ package com.PhonebookPrototype.firstprototype.repository;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -26,5 +27,10 @@ public interface Accounts extends JpaRepository<Account, Long>, JpaSpecification
 			  nativeQuery = true)
 	List<Account> findUser(String username, String password);
 	
+	// Select uniq_contacts from Account:
+	@Query(value = "SELECT uniq_contacts FROM Accounts WHERE user_id = ?1", 
+			  nativeQuery = true)
+	List<Long> getUniqContacts(long uid);
 
+	
 }

@@ -12,4 +12,7 @@ public interface Contacts extends JpaRepository<Contact, Long> {
 	// Retrieve all matching user_ids
 	@Query(value = "SELECT * FROM Contacts WHERE bound_user_id = ?1 AND ref_user_id != ?1", nativeQuery=true)
 	List<JSONObject> findContactByRefUser(long bound_user_id);
+	
+	@Query(value = "SELECT * FROM Contacts WHERE ref_user_id != ?1 AND ref_user_id > 0", nativeQuery=true)
+	List<JSONObject> findAlltoJSON(long uid);
 }

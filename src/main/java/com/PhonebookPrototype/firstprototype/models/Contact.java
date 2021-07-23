@@ -84,6 +84,12 @@ public class Contact{
 		return this.ref_user_id;
 	}
 	
+	// Assign ownership
+	public void set_bound_userID(long cid, long uid) {
+		this.contact_id = cid;
+		this.bound_user_id = uid;
+	}
+	
 	
 	public Contact(){
 		
